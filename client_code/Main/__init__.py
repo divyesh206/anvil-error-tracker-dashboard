@@ -13,24 +13,12 @@ class Main(MainTemplate):
         self.init_components(**properties)
         anvil.users.login_with_form(show_signup_option= True)
         self.order_menu.selected_value = "Total Users"
-        print(anvil.app.environment)
         self.filter_menu.selected_value = "Active Errors"
-
-        self.all_errors, self.new_errors, self.reappeared_errors, app_id, last_opened = anvil.server.call('get_errors_init')
         
-        self.filter_menu.items = {
-                "Active Errors": {"status" : q.not_("fixed", "ignored")},
-                "New Errors": {"first_appeared" : q.greater_than(last_opened)},
-                "Reappeared Errors": {"status" : "reappeared"},
-                "Fixed Errors": {"status" : "fixed"},
-                "Ignored Errors": {"status" : "ignored"},
-                "Show All": {},
-            }
-        self.order_menu.items = {
-            "Total Users" : "user_count",
-            "Last Appeared" : "last_appeared",
-            "Total Occurences" : "error_count"
-        }
+        self.refresh_errors_count()
+
+    def refresh_errors_count(self):
+        self.all_errors, self.new_errors, self.reappeared_errors, app_id, last_opened = anvil.server.call('get_errors_init')
         
         if not app_id:
             Container = LinearPanel(spacing_below="none")
@@ -40,13 +28,22 @@ class Main(MainTemplate):
             alert(Container, title= "Set up your APP ID", dismissible= False, buttons=["Submit"])
             app_id = APP_ID_Input.text
             anvil.server.call("set_app_id", app_id)
+
             
         Globals.app_id = app_id
         Globals.last_opened = last_opened
-        self.alL_errors_count.text = len(self.all_errors)
-        self.new_errors_count.text = len(self.new_errors)
-        self.reappeared_errors_count.text = len(self.reappeared_errors)
-        self.layout.show_sidesheet = False
+        self.alL_errors_count.text = self.all_errors
+        self.new_errors_count.text = self.new_errors
+        self.reappeared_errors_count.text = self.reappeared_errors
+
+        self.filter_menu.items = {
+                "Active Errors": {"status" : q.not_("fixed", "ignored")},
+                "New Errors": {"first_appeared" : q.greater_than(last_opened), "status" : q.not_("fixed", "ignored")},
+                "Reappeared Errors": {"status" : "reappeared"},
+                "Fixed Errors": {"status" : "fixed"},
+                "Ignored Errors": {"status" : "ignored"},
+                "All Errors": {},
+            }
         
     def form_show(self, **event_args):
         for row in self.all_errors:

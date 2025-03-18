@@ -27,3 +27,7 @@
     background-color: transparent !important;
     min-width: 50px;
 }
+
+.anvil-role-rounded {
+    border-radius: 10px;
+}

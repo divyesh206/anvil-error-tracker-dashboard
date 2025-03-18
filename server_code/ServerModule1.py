@@ -7,21 +7,19 @@ import anvil.tables
 error_table_columns = q.fetch_only("error_msg", "user_count", "last_appeared", "status", "traceback", "first_appeared", "error_count")
 timeline_columns = q.fetch_only("type", "datetime", "additional_info", user = q.fetch_only("email"), error = q.fetch_only())
 
-@anvil.server.callable(require_user=lambda user: user['enabled'])
+@anvil.server.callable()
 def get_errors_init():
 
-    order_by = [anvil.tables.order_by("user_count", ascending = False), anvil.tables.order_by("last_appeared", ascending = False)]
-    
     user_data = app_tables.user_data.get()
     last_opened = user_data['last_opened']
-    active_errors = app_tables.error.search(*order_by, error_table_columns, status=q.not_("fixed", "ignored"))
+    active_errors = app_tables.error.search(q.fetch_only(), status=q.not_("fixed", "ignored"))
     if last_opened:
-        new_errors = app_tables.error.search(*order_by, error_table_columns, first_appeared=q.greater_than(user_data["last_opened"]))
+        new_errors = app_tables.error.search(q.fetch_only(), q.page_size(1), first_appeared=q.greater_than(user_data["last_opened"]))
     else:
         new_errors = []
-    reappeared_errors = app_tables.error.search(*order_by, error_table_columns, status="reappeared")
+    reappeared_errors = app_tables.error.search(q.fetch_only(),  q.page_size(1), error_table_columns, status="reappeared")
     user_data['last_opened'] = datetime.utcnow()
-    return active_errors, new_errors, reappeared_errors, user_data['app_id'], last_opened
+    return len(active_errors), len(new_errors), len(reappeared_errors), user_data['app_id'], last_opened
 
 @anvil.server.callable(require_user=lambda user: user['enabled'])
 def set_app_id(app_id):

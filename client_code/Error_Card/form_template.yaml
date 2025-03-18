@@ -7,14 +7,36 @@ components:
       name: error_msg
       properties: {font_family: monospace, font_size: 18, text: ''}
       type: form:dep_lin1x4oec0ytd:_Components.Text
-    - data_bindings:
-      - {code: 'self.item[''status''].capitalize()', property: text, writeback: false}
+    - components:
+      - data_bindings:
+        - {code: 'self.item[''status''].capitalize()', property: text, writeback: false}
+        layout_properties: {}
+        name: status
+        properties:
+          spacing:
+            margin: ['0', null, null, null]
+        type: form:dep_lin1x4oec0ytd:_Components.Text
+      - name: new
+        properties:
+          background_color: theme:Primary
+          bold: false
+          font_size: 12
+          role: rounded
+          spacing:
+            padding: ['2', '8', '2', '8']
+          text: New
+          text_color: theme:On Primary
+          visible: false
+        type: form:dep_lin1x4oec0ytd:_Components.Text
       layout_properties: {slot: card-content-container-slot}
-      name: status
+      name: flow_panel_2
       properties:
+        gap: tiny
         spacing:
-          margin: ['5', null, null, null]
-      type: form:dep_lin1x4oec0ytd:_Components.Text
+          margin: ['8', null, null, null]
+        spacing_above: none
+        spacing_below: none
+      type: FlowPanel
     - components:
       - data_bindings:
         - {code: 'f"{self.item[''error_count'']} Times"', property: text, writeback: false}
