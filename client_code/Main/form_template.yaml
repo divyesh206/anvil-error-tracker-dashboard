@@ -1,0 +1,157 @@
+components_by_slot:
+  content:
+  - components:
+    - layout_properties: {grid_position: 'NFJMBM,YSJWAH'}
+      name: text_2_copy
+      properties:
+        bold: true
+        font_size: 30
+        scale: large
+        spacing:
+          margin: ['25', null, '0', '0']
+          padding: [null, null, null, '0']
+        text: Errors Tracker
+        text_color: theme:Primary
+      type: form:dep_lin1x4oec0ytd:_Components.Text
+    - layout_properties: {grid_position: 'ORDXTS,UMOSES'}
+      name: divider_1
+      properties:
+        margin: [null, null, '10', null]
+      type: form:dep_lin1x4oec0ytd:_Components.Divider
+    - layout_properties: {grid_position: 'SOAPPS,WCYTJO'}
+      name: spacer_2
+      properties: {height: '5'}
+      type: Spacer
+    - components:
+      - components:
+        - layout_properties: {slot: card-content-container-slot}
+          name: alL_errors_count
+          properties: {bold: true, font_size: 30, scale: large, text: '10', text_color: 'theme:Error'}
+          type: form:dep_lin1x4oec0ytd:_Components.Text
+        - layout_properties: {slot: card-content-container-slot}
+          name: text_1_copy
+          properties: {bold: false, font_size: 16, scale: small, style: body, text: Active Errors}
+          type: form:dep_lin1x4oec0ytd:_Components.Text
+        layout_properties: {slot: card-content-slot}
+        name: card_content_container_1
+        properties: {}
+        type: form:dep_lin1x4oec0ytd:_Components.Card.CardContentContainer
+      layout_properties: {grid_position: 'JMJSJL,SSDUTZ'}
+      name: card_1
+      properties:
+        spacing:
+          margin: [null, null, null, '0']
+      type: form:dep_lin1x4oec0ytd:_Components.Card
+    - components:
+      - components:
+        - layout_properties: {slot: card-content-container-slot}
+          name: new_errors_count
+          properties: {bold: true, font_size: 30, scale: large, text: '10', text_color: 'theme:Error'}
+          type: form:dep_lin1x4oec0ytd:_Components.Text
+        - layout_properties: {slot: card-content-container-slot}
+          name: text_1_copy_copy
+          properties: {bold: false, font_size: 16, scale: small, style: body, text: New Errors}
+          type: form:dep_lin1x4oec0ytd:_Components.Text
+        layout_properties: {slot: card-content-slot}
+        name: card_content_container_1_copy
+        properties: {}
+        type: form:dep_lin1x4oec0ytd:_Components.Card.CardContentContainer
+      layout_properties: {grid_position: 'JMJSJL,YWYDLE'}
+      name: card_1_copy
+      properties: {}
+      type: form:dep_lin1x4oec0ytd:_Components.Card
+    - components:
+      - components:
+        - layout_properties: {slot: card-content-container-slot}
+          name: reappeared_errors_count
+          properties: {bold: true, font_size: 30, scale: large, text: '10', text_color: 'theme:Error'}
+          type: form:dep_lin1x4oec0ytd:_Components.Text
+        - layout_properties: {slot: card-content-container-slot}
+          name: text_1_copy_copy_copy
+          properties: {bold: false, font_size: 16, scale: small, style: body, text: Reappeared Errors}
+          type: form:dep_lin1x4oec0ytd:_Components.Text
+        layout_properties: {slot: card-content-slot}
+        name: card_content_container_1_copy_copy
+        properties: {}
+        type: form:dep_lin1x4oec0ytd:_Components.Card.CardContentContainer
+      layout_properties: {grid_position: 'JMJSJL,EGZYQO'}
+      name: card_1_copy_copy
+      properties:
+        spacing:
+          margin: [null, '0', null, null]
+      type: form:dep_lin1x4oec0ytd:_Components.Card
+    - layout_properties: {grid_position: 'TJUMTQ,FJZDJU'}
+      name: spacer_1
+      properties: {height: '20'}
+      type: Spacer
+    - components:
+      - event_bindings: {pressed_enter: refresh_errors}
+        layout_properties: {expand: true}
+        name: search_input
+        properties: {appearance: outlined, label: Search Errors, leading_icon: 'mi:search', leading_icon_color: '', placeholder: ''}
+        type: form:dep_lin1x4oec0ytd:_Components.TextInput.TextBox
+      - event_bindings: {change: refresh_errors}
+        layout_properties: {}
+        name: filter_menu
+        properties:
+          appearance: outlined
+          items: [Active Errors, New Errors, Reappeared Errors, Fixed Errors]
+          label: Filter
+          placeholder: ''
+          selected_bold: false
+        type: form:dep_lin1x4oec0ytd:_Components.DropdownMenu
+      - event_bindings: {change: refresh_errors}
+        layout_properties: {}
+        name: order_menu
+        properties:
+          appearance: outlined
+          icon: ''
+          items: [Total Users, Last Appeared, Total Occurrences]
+          label: Order By
+          placeholder: ''
+          selected_bold: false
+        type: form:dep_lin1x4oec0ytd:_Components.DropdownMenu
+      layout_properties: {grid_position: 'BKDXAV,KUJKUS'}
+      name: flow_panel_1
+      properties:
+        gap: small
+        spacing:
+          padding: [null, '5', null, '5']
+      type: FlowPanel
+    - layout_properties: {grid_position: 'BOPNOX,NSZFZW'}
+      name: results_panel
+      properties:
+        spacing:
+          margin: ['20', null, null, null]
+      type: LinearPanel
+    layout_properties: {}
+    name: column_panel_1
+    properties: {col_spacing: none}
+    type: ColumnPanel
+  navigation: []
+  sidesheet:
+  - components:
+    - layout_properties: {slot: anvil-m3-sidesheet}
+      name: sidesheet_content
+      properties:
+        spacing:
+          margin: ['-10', null, null, null]
+      type: LinearPanel
+    - layout_properties: {slot: anvil-m3-sidesheet-title}
+      name: heading_1
+      properties: {text: Error Details}
+      type: form:dep_lin1x4oec0ytd:_Components.Heading
+    - event_bindings: {click: icon_button_1_click}
+      layout_properties: {slot: anvil-m3-sidesheet-close-button}
+      name: icon_button_1
+      properties: {icon: 'mi:close'}
+      type: form:dep_lin1x4oec0ytd:_Components.IconButton
+    layout_properties: {}
+    name: sidesheet_content_1
+    properties: {}
+    type: form:dep_lin1x4oec0ytd:_Components.SidesheetContent
+is_package: true
+layout:
+  form_event_bindings: {show: form_show}
+  properties: {navigation_rail_collapse_to: bottom_app_bar}
+  type: form:dep_lin1x4oec0ytd:Layouts.NavigationRailLayout

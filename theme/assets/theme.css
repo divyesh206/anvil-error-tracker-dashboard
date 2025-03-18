@@ -1,0 +1,29 @@
+.anvil-m3-navigation-rail {
+    width: 0 !important;
+}
+
+@media (min-width: 600px) {
+    .anvil-m3-content.anvil-m3-content-navigation-rail {
+        left: 0 !important;
+        width: calc(100%) !important;
+    }
+}
+
+@media (min-width: 600px) {
+    .anvil-m3-content-navigation-rail.anvil-m3-content.anvil-m3-sidesheet-open {
+        width: calc(100% - 600px)  !important;
+        padding: 0 50px !important;
+    }
+}
+
+.anvil-m3-sidesheet {
+    width: 100%;
+    max-width: 600px;
+
+}
+
+.anvil-spinner {
+    box-shadow: none;
+    background-color: transparent !important;
+    min-width: 50px;
+}

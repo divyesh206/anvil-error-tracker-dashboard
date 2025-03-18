@@ -1,0 +1,71 @@
+allow_embedding: false
+correct_dependency_ids: {dep_lin1x4oec0ytd: 4UK6WHQ6UX7AKELK}
+db_schema:
+  error:
+    client: none
+    columns:
+    - admin_ui: {order: 0, width: 200}
+      name: Error
+      type: string
+    - admin_ui: {order: 1, width: 200}
+      name: User_Count
+      type: number
+    - admin_ui: {order: 2, width: 200}
+      name: Users
+      target: error
+      type: link_multiple
+    - admin_ui: {order: 3, width: 200}
+      name: timeline
+      type: simpleObject
+    - admin_ui: {order: 5, width: 200}
+      name: last_appeared
+      type: datetime
+    - admin_ui: {order: 6, width: 200}
+      name: status
+      type: string
+    server: full
+    title: Error
+  timeline:
+    client: none
+    columns:
+    - admin_ui: {order: 0, width: 200}
+      name: type
+      type: string
+    - admin_ui: {order: 1, width: 200}
+      name: datetime
+      type: datetime
+    - admin_ui: {order: 2, width: 200}
+      name: Additional_Info
+      type: simpleObject
+    - admin_ui: {order: 3, width: 200}
+      name: User
+      target: timeline
+      type: link_single
+    server: full
+    title: Timeline
+dependencies:
+- config: {}
+  dep_id: dep_lin1x4oec0ytd
+  resolution_hints: {app_id: 4UK6WHQ6UX7AKELK, name: Material 3 Theme, package_name: m3}
+  version: {version_tag: v1.2.2}
+name: Clone of Geeke Error Tracker Dashboard (2)
+native_deps: null
+package_name: Error_Tracker_Dashboard
+runtime_options:
+  client_version: '3'
+  server_spec: {base: python310-minimal}
+  server_spec_disabled: {base: python310-minimal, requirements: ''}
+  server_version: python3-sandbox
+  version: 3
+services:
+- client_config: {enable_v2: true}
+  server_config: {}
+  source: /runtime/services/tables.yml
+- client_config: {}
+  server_config: {}
+  source: /runtime/services/google.yml
+- client_config: {allow_remember_me: true, allow_signup: true, confirm_email: false, enable_automatically: false, remember_me_days: 30, use_email: false, use_google: true}
+  server_config: {user_table: users}
+  source: /runtime/services/anvil/users.yml
+startup: {module: Main, type: form}
+startup_form: null

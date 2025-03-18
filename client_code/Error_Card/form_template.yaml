@@ -1,0 +1,63 @@
+components:
+- components:
+  - components:
+    - data_bindings:
+      - {code: 'self.item[''error_msg'']', property: text, writeback: false}
+      layout_properties: {slot: card-content-container-slot}
+      name: error_msg
+      properties: {font_family: monospace, font_size: 18, text: ''}
+      type: form:dep_lin1x4oec0ytd:_Components.Text
+    - data_bindings:
+      - {code: 'self.item[''status''].capitalize()', property: text, writeback: false}
+      layout_properties: {slot: card-content-container-slot}
+      name: status
+      properties:
+        spacing:
+          margin: ['5', null, null, null]
+      type: form:dep_lin1x4oec0ytd:_Components.Text
+    - components:
+      - data_bindings:
+        - {code: 'f"{self.item[''error_count'']} Times"', property: text, writeback: false}
+        layout_properties: {}
+        name: text_1
+        properties: {icon: 'mi:history', text: 58 Times, text_color: 'theme:Outline'}
+        type: form:dep_lin1x4oec0ytd:_Components.Text
+      - data_bindings:
+        - {code: 'f"{self.item[''user_count'']} Users"', property: text, writeback: false}
+        layout_properties: {}
+        name: text_1_copy
+        properties: {icon: 'mi:people', text: 23 Users, text_color: 'theme:Outline'}
+        type: form:dep_lin1x4oec0ytd:_Components.Text
+      - data_bindings: []
+        layout_properties: {}
+        name: recent
+        properties: {icon: 'mi:clock_loader_10', text: '', text_color: 'theme:Outline'}
+        type: form:dep_lin1x4oec0ytd:_Components.Text
+      layout_properties: {slot: card-content-container-slot}
+      name: flow_panel_1
+      properties:
+        align: left
+        gap: large
+        spacing:
+          margin: ['15', null, null, null]
+        spacing_below: none
+      type: FlowPanel
+    layout_properties: {slot: card-content-slot}
+    name: card_content_container_1
+    properties:
+      margin: ['16', '16', '16', '16']
+    type: form:dep_lin1x4oec0ytd:_Components.Card.CardContentContainer
+  event_bindings: {click: interactive_card_1_click}
+  layout_properties: {grid_position: 'MLJCFL,MHDBPN'}
+  name: interactive_card_1
+  properties:
+    enabled: true
+    spacing:
+      margin: ['0', '0', '0', '0']
+  type: form:dep_lin1x4oec0ytd:_Components.InteractiveCard
+container:
+  properties:
+    spacing:
+      margin: [null, null, '18', null]
+  type: ColumnPanel
+is_package: true

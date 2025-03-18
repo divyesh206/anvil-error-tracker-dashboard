@@ -1,0 +1,149 @@
+components:
+- components:
+  - components:
+    - components:
+      - data_bindings:
+        - {code: 'self.item[''error_msg'']', property: text, writeback: false}
+        layout_properties: {expand: true}
+        name: error_msg
+        properties: {bold: true, font_family: monospace, font_size: 22, text: ''}
+        type: form:dep_lin1x4oec0ytd:_Components.Text
+      - event_bindings: {click: delete_btn_click}
+        layout_properties: {}
+        name: delete_btn
+        properties:
+          appearance: text
+          icon: mi:delete
+          icon_color: theme:Outline
+          spacing:
+            margin: ['0', null, '0', null]
+            padding: [null, '12', null, '12']
+          text_color: ''
+        type: form:dep_lin1x4oec0ytd:_Components.Button
+      layout_properties: {slot: card-content-container-slot}
+      name: flow_panel_4
+      properties: {gap: none, vertical_align: middle}
+      type: FlowPanel
+    - data_bindings:
+      - {code: 'self.format_traceback(self.item[''traceback''])', property: content, writeback: false}
+      layout_properties: {slot: card-content-container-slot}
+      name: rich_text_1
+      properties:
+        font: monospace
+        font_size: 16
+        format: restricted_html
+        spacing:
+          margin: ['0', null, '0', null]
+          padding: ['0', null, '0', null]
+      type: RichText
+    - data_bindings:
+      - {code: 'self.item[''status''].capitalize()', property: text, writeback: false}
+      layout_properties: {slot: card-content-container-slot}
+      name: status
+      properties:
+        spacing:
+          margin: ['10', null, null, null]
+      type: form:dep_lin1x4oec0ytd:_Components.Text
+    - components:
+      - data_bindings:
+        - {code: 'f"{self.item[''error_count'']} Times"', property: text, writeback: false}
+        layout_properties: {}
+        name: text_1
+        properties: {icon: 'mi:history', text: 58 Times, text_color: 'theme:Outline'}
+        type: form:dep_lin1x4oec0ytd:_Components.Text
+      - data_bindings:
+        - {code: 'f"{self.item[''user_count'']} Users"', property: text, writeback: false}
+        layout_properties: {}
+        name: text_1_copy
+        properties: {icon: 'mi:people', text: 23 Users, text_color: 'theme:Outline'}
+        type: form:dep_lin1x4oec0ytd:_Components.Text
+      - data_bindings: []
+        layout_properties: {}
+        name: recent
+        properties: {icon: 'mi:clock_loader_10', text: '', text_color: 'theme:Outline'}
+        type: form:dep_lin1x4oec0ytd:_Components.Text
+      layout_properties: {slot: card-content-container-slot}
+      name: flow_panel_1
+      properties:
+        align: justify
+        gap: large
+        spacing:
+          margin: ['15', null, null, null]
+        spacing_below: none
+      type: FlowPanel
+    layout_properties: {slot: card-content-slot}
+    name: card_content_container_1
+    properties: {}
+    type: form:dep_lin1x4oec0ytd:_Components.Card.CardContentContainer
+  layout_properties: {grid_position: 'GVOPZV,APEAAA'}
+  name: card_1
+  properties:
+    spacing:
+      margin: [null, '0', null, '0']
+  type: form:dep_lin1x4oec0ytd:_Components.Card
+- components:
+  - data_bindings: []
+    layout_properties: {expand: true}
+    name: first_appeared
+    properties:
+      icon: ''
+      spacing:
+        margin: ['0', null, null, '5']
+      text: ''
+      text_color: theme:Outline
+    type: form:dep_lin1x4oec0ytd:_Components.Text
+  - data_bindings:
+    - {code: '"Mark Unfixed" if self.item["status"] == "fixed" else "Mark Fixed"', property: text, writeback: false}
+    - {code: '"mi:close" if self.item["status"] == "fixed" else "mi:check"', property: icon, writeback: false}
+    event_bindings: {click: fix_toggle_btn_click}
+    layout_properties: {}
+    name: fix_toggle_btn
+    properties: {align: right, background_color: 'rgba(0, 2', bold: true, font_size: 15, icon: '', text: Mark  Fixed}
+    type: form:dep_lin1x4oec0ytd:_Components.Button
+  - data_bindings:
+    - {code: '"Ignore" if self.item[''status''] != "ignored" else "Unignore"', property: text, writeback: false}
+    - {code: '"mi:alarm_off" if self.item[''status''] != "ignored" else "mi:alarm_on"', property: icon, writeback: false}
+    event_bindings: {click: ignore_toggle_btn_click}
+    layout_properties: {}
+    name: ignore_toggle_btn
+    properties: {appearance: elevated, icon: '', text: Ignore}
+    type: form:dep_lin1x4oec0ytd:_Components.Button
+  layout_properties: {grid_position: 'WVBCHK,YVEVUP'}
+  name: flow_panel_2
+  properties: {gap: none, spacing_below: medium, vertical_align: middle}
+  type: FlowPanel
+- layout_properties: {grid_position: 'GZGRKT,IBWDMO'}
+  name: divider_1
+  properties: {}
+  type: form:dep_lin1x4oec0ytd:_Components.Divider
+- components:
+  - layout_properties: {expand: true}
+    name: text_2
+    properties:
+      bold: true
+      font_size: 24
+      scale: large
+      spacing:
+        margin: ['0', null, null, null]
+        padding: [null, null, null, '10']
+      text: Timeline
+      text_color: theme:On Primary Container
+    type: form:dep_lin1x4oec0ytd:_Components.Text
+  - event_bindings: {click: clear_timeline_btn_click}
+    layout_properties: {}
+    name: clear_timeline_btn
+    properties: {appearance: text, icon: 'mi:device_reset', icon_color: 'theme:Outline', text: Clear Timeline, text_color: 'theme:Outline'}
+    type: form:dep_lin1x4oec0ytd:_Components.Button
+  layout_properties: {grid_position: 'ERXTMC,UOLQSL'}
+  name: flow_panel_3
+  properties: {spacing_above: small, vertical_align: middle}
+  type: FlowPanel
+- event_bindings: {show: timeline_panel_show}
+  layout_properties: {grid_position: 'XTCUXP,VYFZTM'}
+  name: timeline_panel
+  properties: {border: ''}
+  type: LinearPanel
+container:
+  event_bindings: {refreshing_data_bindings: form_refreshing_data_bindings}
+  type: ColumnPanel
+is_package: true

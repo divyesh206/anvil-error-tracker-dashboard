@@ -1,0 +1,89 @@
+components:
+- components:
+  - components:
+    - layout_properties: {}
+      name: text_1
+      properties: {font_size: null, icon: 'mi:account_circle', icon_size: 40, text: ' '}
+      type: form:dep_lin1x4oec0ytd:_Components.Text
+    - components:
+      - data_bindings: []
+        layout_properties: {}
+        name: headline
+        properties:
+          font_size: 15
+          icon: ''
+          spacing:
+            margin: [null, null, '0', null]
+          text: ''
+        type: form:dep_lin1x4oec0ytd:_Components.Text
+      - components:
+        - layout_properties: {expand: true}
+          name: time
+          properties:
+            font_size: 12
+            icon: ''
+            spacing:
+              margin: [null, null, '0', null]
+            text: ''
+            text_color: theme:Outline
+          type: form:dep_lin1x4oec0ytd:_Components.Text
+        - layout_properties: {}
+          name: session_link
+          properties:
+            font_size: null
+            icon: mi:open_in_new
+            icon_size: 16
+            spacing:
+              margin: ['0', '20', '0', '5']
+            text: View Session
+            text_color: theme:Outline
+            underline: false
+          type: form:dep_lin1x4oec0ytd:_Components.Link
+        layout_properties: {}
+        name: flow_panel_2
+        properties:
+          spacing:
+            margin: [null, null, '0', null]
+          spacing_below: none
+        type: FlowPanel
+      layout_properties: {expand: true}
+      name: linear_panel_1
+      properties: {spacing_below: none}
+      type: LinearPanel
+    layout_properties: {slot: card-content-slot}
+    name: flow_panel_1
+    properties:
+      gap: none
+      spacing:
+        margin: ['8', null, '0', '16']
+      vertical_align: middle
+    type: FlowPanel
+  - event_bindings: {click: additional_details_toggle_click}
+    layout_properties: {slot: card-content-slot}
+    name: additional_details_toggle
+    properties:
+      align: left
+      appearance: text
+      icon: mi:keyboard_arrow_right
+      spacing:
+        margin: ['0', null, '5', null]
+      text: Additional Details
+      text_color: ''
+    type: form:dep_lin1x4oec0ytd:_Components.Button
+  - event_bindings: {show: additional_details_panel_show}
+    layout_properties: {slot: card-content-slot}
+    name: additional_details_panel
+    properties:
+      border: ''
+      spacing:
+        margin: [null, '10', '15', '10']
+        padding: ['0', '0', '0', '0']
+      spacing_below: medium
+      visible: false
+    type: LinearPanel
+  layout_properties: {grid_position: 'XRMJWJ,WZMGYF'}
+  name: card_1
+  properties: {}
+  type: form:dep_lin1x4oec0ytd:_Components.Card
+container: {type: ColumnPanel}
+is_package: true
