@@ -1,9 +1,7 @@
 from ._anvil_designer import MainTemplate
 import anvil.server
-from m3.components import TextBox
-from anvil import alert, LinearPanel, Label
+from anvil import alert
 from .. import Globals
-import anvil.tables.query as q
 import anvil.tz
 import anvil.users
 
