@@ -4,12 +4,12 @@ from .StatusChange import StatusChange
 from .UserError import UserError
 import anvil.server
 from anvil import get_open_form, confirm
+from .. import Globals
 
 class Error_Details(Error_DetailsTemplate):
     def __init__(self, **properties):
         self.init_components(**properties)
-
-        
+        Globals.active_error = self.item
 
     def format_traceback(self, traceback_list):
         formatted_lines = []
@@ -40,7 +40,7 @@ class Error_Details(Error_DetailsTemplate):
         anvil.server.call("error_fix_toggle",self.item)
         self.refresh_data_bindings()
         self.timeline_panel_show()
-        get_open_form().refresh_errors()
+        get_open_form().refresh()
 
     def form_refreshing_data_bindings(self, **event_args):
         status = self.item['status']
@@ -59,8 +59,7 @@ class Error_Details(Error_DetailsTemplate):
     def ignore_toggle_btn_click(self, **event_args):
         anvil.server.call("ignore_error_toggle",self.item)
         self.refresh_data_bindings()
-        self.timeline_panel_show()
-        get_open_form().refresh_errors()
+        get_open_form().refresh()
 
     def clear_timeline_btn_click(self, **event_args):
         if confirm("Are you sure you wish to clear the timeline for this error? This action cannot be undone", title = "Clear Timeline?", buttons = ["Cancel", "Clear"]):
@@ -71,4 +70,7 @@ class Error_Details(Error_DetailsTemplate):
         if confirm("You will lose all data and timeline for this error which cannot be recovered", title = "Delete Error?", buttons = ["Cancel", "Delete"]):
             anvil.server.call("delete_error", self.item)
             self.remove_from_parent()
-            get_open_form().refresh_errors()
+            get_open_form().refresh()
+
+    def form_show(self, **event_args):
+        self.card_content_container_1.scroll_into_view()

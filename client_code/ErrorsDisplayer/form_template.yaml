@@ -1,32 +1,32 @@
 components:
-- components:
-  - event_bindings: {pressed_enter: refresh_errors}
-    layout_properties: {expand: true}
-    name: search_input
-    properties: {appearance: outlined, label: Search Errors, leading_icon: 'mi:search', leading_icon_color: '', placeholder: ''}
-    type: form:dep_lin1x4oec0ytd:_Components.TextInput.TextBox
-  - event_bindings: {change: refresh_errors}
-    layout_properties: {}
-    name: filter_menu
-    properties:
-      appearance: outlined
-      items: [Active Errors, New Errors, Reappeared Errors, Fixed Errors]
-      label: Filter
-      placeholder: ''
-      selected_bold: false
-    type: form:dep_lin1x4oec0ytd:_Components.DropdownMenu
-  - event_bindings: {change: refresh_errors}
-    layout_properties: {}
-    name: order_menu
-    properties:
-      appearance: outlined
-      icon: ''
-      items: [Total Users, Last Appeared, Total Occurrences]
-      label: Order By
-      placeholder: ''
-      selected_bold: false
-    type: form:dep_lin1x4oec0ytd:_Components.DropdownMenu
-  layout_properties: {grid_position: 'MTACLY,GGUDMV'}
+- event_bindings: {pressed_enter: refresh_errors}
+  layout_properties: {grid_position: 'TLABCX,VEDJWL'}
+  name: search_input
+  properties: {appearance: outlined, label: Search Errors or Emails, leading_icon: 'mi:search', leading_icon_color: '', placeholder: ''}
+  type: form:dep_lin1x4oec0ytd:_Components.TextInput.TextBox
+- event_bindings: {change: refresh_errors}
+  layout_properties: {grid_position: 'TLABCX,FZLKAZ'}
+  name: filter_menu
+  properties:
+    appearance: outlined
+    items: [Active Errors, New Errors, Reappeared Errors, Fixed Errors]
+    label: Filter
+    placeholder: ''
+    selected_bold: false
+  type: form:dep_lin1x4oec0ytd:_Components.DropdownMenu
+- event_bindings: {change: refresh_errors}
+  layout_properties: {grid_position: 'TLABCX,HSCKRO'}
+  name: order_menu
+  properties:
+    appearance: outlined
+    icon: ''
+    items: [Total Users, Last Appeared, Total Occurrences]
+    label: Order By
+    placeholder: ''
+    selected_bold: false
+  type: form:dep_lin1x4oec0ytd:_Components.DropdownMenu
+- components: []
+  layout_properties: {grid_position: 'ZMAGXB,QPDKEG'}
   name: flow_panel_1
   properties:
     gap: small
@@ -42,5 +42,6 @@ components:
   type: LinearPanel
 container:
   event_bindings: {show: form_show}
+  properties: {col_widths: '{"VEDJWL":27,"FZLKAZ":17,"HSCKRO":16}'}
   type: ColumnPanel
 is_package: true

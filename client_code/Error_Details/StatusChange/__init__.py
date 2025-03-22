@@ -17,3 +17,6 @@ class StatusChange(StatusChangeTemplate):
             self.headline.text = "Error has reappeared"
             self.icon.icon = "mi:warning"
             self.icon.icon_color = "theme:Error"
+
+        if self.item['admin_user']:
+            self.headline.text+=f" by {self.item['admin_user']['email']}"

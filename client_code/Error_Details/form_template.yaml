@@ -144,6 +144,6 @@ components:
   properties: {border: ''}
   type: LinearPanel
 container:
-  event_bindings: {refreshing_data_bindings: form_refreshing_data_bindings}
+  event_bindings: {refreshing_data_bindings: form_refreshing_data_bindings, show: form_show}
   type: ColumnPanel
 is_package: true

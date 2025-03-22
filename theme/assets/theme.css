@@ -31,3 +31,9 @@
 .anvil-role-rounded {
     border-radius: 10px;
 }
+
+@media (max-width: 600px) {
+    .anvil-m3-navigation-rail.anvil-m3-bottom-app-bar {
+        display: none;
+    }
+}

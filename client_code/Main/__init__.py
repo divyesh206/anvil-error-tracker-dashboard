@@ -11,7 +11,8 @@ class Main(MainTemplate):
     def __init__(self, **properties):
         self.init_components(**properties)
         anvil.users.login_with_form(show_signup_option= True)
-       
+        self.layout.show_sidesheet = False
+        
         self.refresh_errors_count()
 
     def refresh_errors_count(self):
@@ -21,9 +22,16 @@ class Main(MainTemplate):
         self.new_errors_count.text = self.new_errors
         self.reappeared_errors_count.text = self.reappeared_errors
 
+    def refresh(self):
+        self.refresh_errors_count()
+        self.errors_displayer.refresh_errors()
         
     def form_show(self, **event_args):
-        self.errors_displayer_1.refresh_errors()
+        self.errors_displayer.refresh_errors()
 
     def icon_button_1_click(self, **event_args):
         self.layout.show_sidesheet = False
+
+    def merge_btn_click(self, **event_args):
+        from ..ErrorsDisplayer import ErrorsDisplayer
+        alert(ErrorsDisplayer(for_merge = True), title= "Merge Errors", large = True)

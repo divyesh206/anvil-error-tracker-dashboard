@@ -3,10 +3,13 @@ from anvil.js.window import Date, moment
 import anvil.tz
 from anvil import *
 from ...Error_Details import Error_Details
+from ... import Globals
+import anvil.server
 
 class Error_Card(Error_CardTemplate):
     def __init__(self, **properties):
         self.init_components(**properties)
+        self.for_merge = properties.get("for_merge")
         status = self.item['status']
         if status == "fixed":
             self.status.foreground="limegreen"
@@ -14,7 +17,7 @@ class Error_Card(Error_CardTemplate):
             self.status.foreground='theme:Outline'
         else:
            self.status.foreground='theme:Error'
-
+        self.new.visible = self.item['first_appeared']>Globals.last_opened
         last_appeared = self.item['last_appeared']
         if last_appeared:
             self.recent.text = self.get_relative_datetime(last_appeared.astimezone(anvil.tz.tzlocal()))
@@ -33,6 +36,10 @@ class Error_Card(Error_CardTemplate):
         return moment(js_date).fromNow()
 
     def interactive_card_1_click(self, **event_args):
+        if self.for_merge:
+            if not confirm("Details and timeline from the existing error will be moved to this error", title = "Merge into this Error?"):
+                return
+            anvil.server.call("merge_error", Globals.active_error, self.item)
         get_open_form().layout.show_sidesheet = True
         get_open_form().sidesheet_content.clear()
         get_open_form().sidesheet_content.add_component(Error_Details(item = self.item))
