@@ -48,7 +48,7 @@ def ignore_error_toggle(error_row):
 
 @anvil.server.callable(require_user=lambda user: user['enabled'])
 def get_errors(query, search_term, order_by):
-    print(query)
+    
     return app_tables.error.search(anvil.tables.order_by(order_by, ascending = False), 
                                    anvil.tables.order_by("last_appeared", ascending = False), 
                                    q.any_of(

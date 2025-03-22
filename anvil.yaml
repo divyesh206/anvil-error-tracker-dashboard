@@ -1,48 +1,103 @@
 allow_embedding: false
 correct_dependency_ids: {dep_lin1x4oec0ytd: 4UK6WHQ6UX7AKELK}
 db_schema:
+  app_data:
+    client: none
+    columns:
+    - admin_ui: {width: 200}
+      name: app_id
+      type: string
+    server: full
+    title: app_data
   error:
     client: none
     columns:
-    - admin_ui: {order: 0, width: 200}
-      name: Error
+    - admin_ui: {width: 200}
+      name: error_msg
       type: string
-    - admin_ui: {order: 1, width: 200}
-      name: User_Count
+    - admin_ui: {width: 200}
+      name: user_count
       type: number
-    - admin_ui: {order: 2, width: 200}
-      name: Users
-      target: error
-      type: link_multiple
-    - admin_ui: {order: 3, width: 200}
-      name: timeline
-      type: simpleObject
-    - admin_ui: {order: 5, width: 200}
+    - admin_ui: {width: 200}
       name: last_appeared
       type: datetime
-    - admin_ui: {order: 6, width: 200}
+    - admin_ui: {width: 200}
       name: status
       type: string
+    - admin_ui: {width: 200}
+      name: traceback
+      type: simpleObject
+    - admin_ui: {width: 200}
+      name: first_appeared
+      type: datetime
+    - admin_ui: {width: 200}
+      name: sessions
+      type: simpleObject
+    - admin_ui: {width: 200}
+      name: error_count
+      type: number
+    - admin_ui: {width: 200}
+      name: users
+      type: simpleObject
     server: full
     title: Error
   timeline:
     client: none
     columns:
-    - admin_ui: {order: 0, width: 200}
+    - admin_ui: {width: 200}
       name: type
       type: string
-    - admin_ui: {order: 1, width: 200}
+    - admin_ui: {width: 200}
       name: datetime
       type: datetime
-    - admin_ui: {order: 2, width: 200}
-      name: Additional_Info
+    - admin_ui: {width: 200}
+      name: additional_info
       type: simpleObject
-    - admin_ui: {order: 3, width: 200}
-      name: User
-      target: timeline
+    - admin_ui: {width: 200}
+      name: error
+      target: error
       type: link_single
+    - admin_ui: {width: 200}
+      name: admin_user
+      target: users
+      type: link_single
+    - admin_ui: {width: 200}
+      name: user_email
+      type: string
     server: full
     title: Timeline
+  users:
+    client: none
+    columns:
+    - admin_ui: {width: 200}
+      name: email
+      type: string
+    - admin_ui: {width: 200}
+      name: enabled
+      type: bool
+    - admin_ui: {width: 200}
+      name: last_login
+      type: datetime
+    - admin_ui: {width: 200}
+      name: password_hash
+      type: string
+    - admin_ui: {width: 200}
+      name: n_password_failures
+      type: number
+    - admin_ui: {width: 200}
+      name: confirmed_email
+      type: bool
+    - admin_ui: {width: 200}
+      name: signed_up
+      type: datetime
+    - admin_ui: {width: 200}
+      name: remembered_logins
+      type: simpleObject
+    - admin_ui: {width: 200}
+      name: last_opened
+      type: datetime
+    server: full
+    title: Users
 dependencies:
 - config: {}
   dep_id: dep_lin1x4oec0ytd
