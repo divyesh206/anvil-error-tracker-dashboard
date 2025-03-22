@@ -14,8 +14,9 @@ class Main(MainTemplate):
         self.refresh_errors_count()
 
     def refresh_errors_count(self):
-        self.all_errors, self.new_errors, self.reappeared_errors, last_opened = anvil.server.call('get_errors_init')
+        self.all_errors, self.new_errors, self.reappeared_errors, last_opened, app_id = anvil.server.call('get_errors_init')
         Globals.last_opened = last_opened
+        Globals.app_id = app_id
         self.alL_errors_count.text = self.all_errors
         self.new_errors_count.text = self.new_errors
         self.reappeared_errors_count.text = self.reappeared_errors

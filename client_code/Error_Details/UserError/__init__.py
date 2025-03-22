@@ -10,13 +10,9 @@ class UserError(UserErrorTemplate):
 
             
         self.init_components(**properties)
-        
-        if self.item['user']:
-            self.email = self.item['user']['email']
-        else:
-            self.email = "Guest User"
 
-        self.headline.text = f"{self.email} faced this issue"
+        email = self.item['user_email'] or "Guest User"
+        self.headline.text = f"{email} faced this issue"
         
         self.time.text = time_operations.get_relative_time(self.item['datetime'])
         for field, value in self.item['additional_info'].items():
@@ -31,5 +27,5 @@ class UserError(UserErrorTemplate):
         self.additional_details_toggle.icon="mi:keyboard_arrow_down" if self.additional_details_panel.visible else "mi:keyboard_arrow_right"
 
     def session_link_click(self, **event_args):
-        app_id = Globals.get_app_id()
+        app_id = Globals.app_id
         window.open(f"https://anvil.works/build/apps/{app_id}/sessions/{self.item['additional_info']['session']}", "_blank")

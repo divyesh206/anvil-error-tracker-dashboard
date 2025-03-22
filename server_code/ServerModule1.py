@@ -11,6 +11,8 @@ timeline_columns = q.fetch_only("type", "datetime", "additional_info", user = q.
 def get_errors_init():
     user = anvil.users.get_user()
     last_opened = user['last_opened']
+    app_data = app_tables.app_data.get()
+    app_id = app_data['app_id'] if app_data else None
     active_errors = app_tables.error.search(q.fetch_only(), status=q.not_("fixed", "ignored"))
     if last_opened:
         new_errors = app_tables.error.search(q.fetch_only(), q.page_size(1), first_appeared=q.greater_than(last_opened))
@@ -18,7 +20,7 @@ def get_errors_init():
         new_errors = []
     reappeared_errors = app_tables.error.search(q.fetch_only(),  q.page_size(1), error_table_columns, status="reappeared")
     user['last_opened'] = datetime.utcnow()
-    return len(active_errors), len(new_errors), len(reappeared_errors), last_opened
+    return len(active_errors), len(new_errors), len(reappeared_errors), last_opened, app_id
 
 
 @anvil.server.callable(require_user=lambda user: user['enabled'])
