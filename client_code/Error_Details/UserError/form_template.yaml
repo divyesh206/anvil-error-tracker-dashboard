@@ -27,7 +27,8 @@ components:
             text: ''
             text_color: theme:Outline
           type: form:dep_lin1x4oec0ytd:_Components.Text
-        - layout_properties: {}
+        - event_bindings: {click: session_link_click}
+          layout_properties: {}
           name: session_link
           properties:
             font_size: null
