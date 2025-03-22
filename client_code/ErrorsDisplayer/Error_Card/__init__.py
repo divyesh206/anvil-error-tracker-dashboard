@@ -2,7 +2,7 @@ from ._anvil_designer import Error_CardTemplate
 from anvil.js.window import Date, moment
 import anvil.tz
 from anvil import *
-from ..Error_Details import Error_Details
+from ...Error_Details import Error_Details
 
 class Error_Card(Error_CardTemplate):
     def __init__(self, **properties):

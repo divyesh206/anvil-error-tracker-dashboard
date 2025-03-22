@@ -1,12 +1,15 @@
 from ._anvil_designer import Error_DetailsTemplate
 from .. import time_operations
-from ..StatusChange import StatusChange
+from .StatusChange import StatusChange
+from .UserError import UserError
 import anvil.server
 from anvil import get_open_form, confirm
 
 class Error_Details(Error_DetailsTemplate):
     def __init__(self, **properties):
         self.init_components(**properties)
+
+        
 
     def format_traceback(self, traceback_list):
         formatted_lines = []
@@ -22,7 +25,7 @@ class Error_Details(Error_DetailsTemplate):
     def timeline_panel_show(self, **event_args):
         
         self.timeline_panel.clear()
-        from ..UserError import UserError
+        
         with anvil.server.loading_indicator(self.timeline_panel, min_height=80):
 
             for row in anvil.server.call("get_error_timeline", self.item):
