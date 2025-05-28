@@ -8,7 +8,7 @@ from .. import Globals
 
 class Error_Details(Error_DetailsTemplate):
     def __init__(self, **properties):
-        self.init_components(**properties)
+        self.init_components(**properties)s
         Globals.active_error = self.item
 
     def format_traceback(self, traceback_list):
