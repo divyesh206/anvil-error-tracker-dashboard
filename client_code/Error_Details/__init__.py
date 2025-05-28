@@ -67,7 +67,7 @@ class Error_Details(Error_DetailsTemplate):
             self.timeline_panel.clear()
 
     def delete_btn_click(self, **event_args):
-        if confirm("You will lose all data and timeline for this error which cannot be recovered", title = "Delete Error?", buttons = ["Cancel", "Delete"]):
+        if confirm("You will lose all data and timeline for this error which cannot be recovered", title = "Delete Error?", buttons = ["Cancel", "Delete"]) == "Delete":
             anvil.server.call("delete_error", self.item)
             self.remove_from_parent()
             get_open_form().refresh()
